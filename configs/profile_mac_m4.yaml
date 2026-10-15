@@ -1,0 +1,22 @@
+# Apple Silicon M4 (MacBook Pro or Air). Unified memory is detected at runtime;
+# the Air may have less RAM than the Pro, so verify with scripts/diagnose.py.
+name: mac_m4
+hardware:
+  match_gpu: ["Apple"]
+  vram_budget_mb: 8000
+torch_device: auto        # mps if available and it passes the benchmark, else cpu
+detector:
+  model: models/yolov8n.pt
+  device: auto            # mps -> cpu
+  imgsz: 640
+  conf: 0.10              # ByteTrack input threshold (see defaults.yaml)
+  half: false
+vlm:
+  base_url: http://localhost:11434
+  model: moondream
+  composite_max_side: 768
+  num_ctx: 2048
+  num_predict: 120
+  keep_alive: 15m
+embeddings:
+  device: cpu             # benchmark mps vs cpu

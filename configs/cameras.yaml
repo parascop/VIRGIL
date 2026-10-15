@@ -1,0 +1,33 @@
+# Camera configuration. Never put real RTSP credentials here. Use an
+# environment variable reference instead, e.g. source: "${CAM3_RTSP_URL}".
+# Zone / line coordinates are NORMALISED (0..1) so they work at any resolution.
+#
+# entry line: allowed_direction "positive" = crossing from the negative side to
+# the positive side, where side(pt) = (p2.x-p1.x)*(pt.y-p1.y) - (p2.y-p1.y)*(pt.x-p1.x).
+# With image y pointing down, "positive" is the RIGHT-hand side as you travel p1 -> p2.
+cameras:
+  - id: cam1
+    name: Lobby (demo clip)
+    source: data/clips/demo_cam1.mp4      # file path, webcam index (0) or rtsp:// URL
+    target_fps: 10
+    description: Main lobby, restricted door on the right.
+    zones:
+      - name: restricted_door
+        type: restricted                  # restricted (loiter_s) | prohibited | crowd
+        polygon: [[0.70, 0.20], [1.00, 0.20], [1.00, 1.00], [0.70, 1.00]]
+        loiter_s: 8
+    entry_lines: []
+    thresholds: {}
+  - id: cam2
+    name: Entrance turnstile (demo clip)
+    source: data/clips/demo_cam2.mp4
+    target_fps: 10
+    description: Badge-controlled entrance. People should enter one at a time.
+    zones: []
+    entry_lines:
+      - name: entry_gate
+        p1: [0.20, 0.55]
+        p2: [0.80, 0.55]
+        allowed_direction: positive       # entering = moving down the image
+    thresholds:
+      tailgating: {window_s: 1.5}

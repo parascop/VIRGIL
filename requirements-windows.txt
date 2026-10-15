@@ -1,0 +1,9 @@
+# Windows 10/11 + NVIDIA GPU (RTX 2050 / GTX 1650 class).  Python 3.11, 64-bit.
+#   py -3.11 -m venv .venv ; .venv\Scripts\Activate.ps1
+#   pip install torch==2.5.1 torchvision==0.20.1 --index-url https://download.pytorch.org/whl/cu121
+#   pip install -r requirements-windows.txt
+# (Pick the CUDA build matching your driver at https://pytorch.org/get-started/locally/ .
+#  Without an NVIDIA GPU use the default PyPI wheels; everything still runs on CPU.)
+-r requirements.txt
+tzdata>=2024.2            # Windows has no IANA tz database; zoneinfo (Asia/Kolkata etc.) needs this
+# Ollama for Windows (https://ollama.com/download) is a separate installer and uses the NVIDIA GPU itself.

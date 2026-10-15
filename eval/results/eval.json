@@ -1,0 +1,770 @@
+{
+  "generated_at": "2026-10-15T14:44:46+0000",
+  "setup": {
+    "profile": "configs/profile_gtx1650.yaml",
+    "device_override": "cpu",
+    "vlm_mode": "auto",
+    "tolerance_s": 2.0,
+    "python": "3.11.17",
+    "platform": "linux",
+    "vlm_model": null
+  },
+  "clips": [
+    {
+      "clip": "data/clips/person_down_01.mp4",
+      "camera_id": "cam1",
+      "category": "person down",
+      "duration_s": 12.0,
+      "provenance": "synthetic (scripts/make_demo_clips.py)"
+    },
+    {
+      "clip": "data/clips/tailgating_01.mp4",
+      "camera_id": "cam2",
+      "category": "tailgating",
+      "duration_s": 8.0,
+      "provenance": "synthetic (scripts/make_demo_clips.py)"
+    },
+    {
+      "clip": "data/clips/tailgating_negative_01.mp4",
+      "camera_id": "cam2",
+      "category": "none",
+      "duration_s": 12.0,
+      "provenance": "synthetic (scripts/make_demo_clips.py)"
+    },
+    {
+      "clip": "data/clips/suspicious_01.mp4",
+      "camera_id": "cam1",
+      "category": "suspicious activity",
+      "duration_s": 16.0,
+      "provenance": "synthetic (scripts/make_demo_clips.py)"
+    },
+    {
+      "clip": "data/clips/crowd_01.mp4",
+      "camera_id": "cam1",
+      "category": "crowd incident",
+      "duration_s": 12.0,
+      "provenance": "synthetic (scripts/make_demo_clips.py)"
+    },
+    {
+      "clip": "data/clips/fighting_01.mp4",
+      "camera_id": "cam1",
+      "category": "fighting",
+      "duration_s": 10.0,
+      "provenance": "synthetic (scripts/make_demo_clips.py)"
+    },
+    {
+      "clip": "data/clips/eval/normal_01.mp4",
+      "camera_id": "cam1",
+      "category": "none",
+      "duration_s": 600.0,
+      "provenance": "synthetic (scripts/make_demo_clips.py --normal-minutes 10)"
+    }
+  ],
+  "not_run_datasets": [
+    {
+      "clip": "external/RWF-2000",
+      "category": "fighting",
+      "provenance": "external dataset (RWF-2000; not bundled / not downloaded)",
+      "notes": "NOT RUN. Real fight/non-fight clips. Download separately and add one row per clip."
+    },
+    {
+      "clip": "external/UR-Fall",
+      "category": "person down",
+      "provenance": "external dataset (UR Fall Detection; not bundled / not downloaded)",
+      "notes": "NOT RUN. Real falls recorded in a lab. Add one row per clip."
+    },
+    {
+      "clip": "external/Le2i",
+      "category": "person down",
+      "provenance": "external dataset (Le2i fall dataset; not bundled / not downloaded)",
+      "notes": "NOT RUN. Real falls in home/office scenes. Add one row per clip."
+    }
+  ],
+  "pipeline_runs": [
+    {
+      "clip": "data/clips/person_down_01.mp4",
+      "returncode": 0,
+      "wall_s": 20.7,
+      "log_tail": "appened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.). The weights are downloaded on first use; run scripts/download_models.* once while online.. Events will be stored without embeddings (rerun `python -m vigil.embeddings --repair` later).\n2026-10-15 14:33:07,924 WARNING MainThread vigil.pipeline: VLM not ready: Ollama is not reachable at http://localhost:11434. Install it from https://ollama.com, start it (`ollama serve` or the desktop app) and run `ollama pull moondream`. (events will be stored as unverified until it is)\n2026-10-15 14:33:07,925 INFO    MainThread vigil.pipeline: camera cam1 started (file)\n2026-10-15 14:33:07,928 INFO    MainThread vigil.pipeline: pipeline started (1 cameras, vlm=on)\n2026-10-15 14:33:15,009 INFO    detect vigil.pipeline: [cam1] trigger person_down score=0.78: track 3 flipped to horizontal (AR=2.45), dropped 0.46 body-heights, held still 2.0s\n2026-10-15 14:33:15,014 WARNING vlm vigil.vlm: [ev_9ddbec712fa841eb] VLM request failed: connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))\n2026-10-15 14:33:20,243 INFO    MainThread vigil.pipeline: pipeline stopped\n"
+    },
+    {
+      "clip": "data/clips/tailgating_01.mp4",
+      "returncode": 0,
+      "wall_s": 17.0,
+      "log_tail": " and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.). The weights are downloaded on first use; run scripts/download_models.* once while online.. Events will be stored without embeddings (rerun `python -m vigil.embeddings --repair` later).\n2026-10-15 14:33:29,173 WARNING MainThread vigil.pipeline: VLM not ready: Ollama is not reachable at http://localhost:11434. Install it from https://ollama.com, start it (`ollama serve` or the desktop app) and run `ollama pull moondream`. (events will be stored as unverified until it is)\n2026-10-15 14:33:29,174 INFO    MainThread vigil.pipeline: camera cam2 started (file)\n2026-10-15 14:33:29,179 INFO    MainThread vigil.pipeline: pipeline started (1 cameras, vlm=on)\n2026-10-15 14:33:32,064 INFO    detect vigil.pipeline: [cam2] trigger tailgating score=0.63: tracks 1 and 2 crossed entry line 'entry_gate' 0.80s apart (window 1.5s); no badge data, so this is only a *possible* tailgating event\n2026-10-15 14:33:32,069 WARNING vlm vigil.vlm: [ev_c96106ced35f47d9] VLM request failed: connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))\n2026-10-15 14:33:37,292 INFO    MainThread vigil.pipeline: pipeline stopped\n"
+    },
+    {
+      "clip": "data/clips/tailgating_negative_01.mp4",
+      "returncode": 0,
+      "wall_s": 21.3,
+      "log_tail": "d cpu)\n2026-10-15 14:33:41,669 INFO    MainThread vigil.tracker: YOLO /home/claude/vigil/models/yolov8n.pt loaded on cpu in 0.82s (warm-up 0.90s)\n2026-10-15 14:33:42,115 INFO    MainThread root: Loaded ViT-B-32 model config.\n2026-10-15 14:33:43,868 INFO    MainThread root: Loaded ViT-B-32 model config.\n2026-10-15 14:33:46,194 ERROR   MainThread vigil.pipeline: CLIP/Chroma unavailable: CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.). The weights are downloaded on first use; run scripts/download_models.* once while online.. Events will be stored without embeddings (rerun `python -m vigil.embeddings --repair` later).\n2026-10-15 14:33:46,196 WARNING MainThread vigil.pipeline: VLM not ready: Ollama is not reachable at http://localhost:11434. Install it from https://ollama.com, start it (`ollama serve` or the desktop app) and run `ollama pull moondream`. (events will be stored as unverified until it is)\n2026-10-15 14:33:46,196 INFO    MainThread vigil.pipeline: camera cam2 started (file)\n2026-10-15 14:33:46,200 INFO    MainThread vigil.pipeline: pipeline started (1 cameras, vlm=on)\n2026-10-15 14:33:58,622 INFO    MainThread vigil.pipeline: pipeline stopped\n"
+    },
+    {
+      "clip": "data/clips/suspicious_01.mp4",
+      "returncode": 0,
+      "wall_s": 25.6,
+      "log_tail": "rror: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.). The weights are downloaded on first use; run scripts/download_models.* once while online.. Events will be stored without embeddings (rerun `python -m vigil.embeddings --repair` later).\n2026-10-15 14:34:07,372 WARNING MainThread vigil.pipeline: VLM not ready: Ollama is not reachable at http://localhost:11434. Install it from https://ollama.com, start it (`ollama serve` or the desktop app) and run `ollama pull moondream`. (events will be stored as unverified until it is)\n2026-10-15 14:34:07,373 INFO    MainThread vigil.pipeline: camera cam1 started (file)\n2026-10-15 14:34:07,381 INFO    MainThread vigil.pipeline: pipeline started (1 cameras, vlm=on)\n2026-10-15 14:34:17,802 INFO    detect vigil.pipeline: [cam1] trigger loitering score=0.67: track 1 stayed 8.0s in restricted zone 'restricted_door' (limit 8.0s)\n2026-10-15 14:34:17,810 WARNING vlm vigil.vlm: [ev_23efc5b57da64e45] VLM request failed: connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))\n2026-10-15 14:34:24,231 INFO    MainThread vigil.pipeline: pipeline stopped\n"
+    },
+    {
+      "clip": "data/clips/crowd_01.mp4",
+      "returncode": 0,
+      "wall_s": 21.3,
+      "log_tail": "tch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.). The weights are downloaded on first use; run scripts/download_models.* once while online.. Events will be stored without embeddings (rerun `python -m vigil.embeddings --repair` later).\n2026-10-15 14:34:33,297 WARNING MainThread vigil.pipeline: VLM not ready: Ollama is not reachable at http://localhost:11434. Install it from https://ollama.com, start it (`ollama serve` or the desktop app) and run `ollama pull moondream`. (events will be stored as unverified until it is)\n2026-10-15 14:34:33,299 INFO    MainThread vigil.pipeline: camera cam1 started (file)\n2026-10-15 14:34:33,303 INFO    MainThread vigil.pipeline: pipeline started (1 cameras, vlm=on)\n2026-10-15 14:34:36,782 INFO    detect vigil.pipeline: [cam1] trigger crowd_count score=0.58: 7 people in 'frame' (limit 6) for 1.0s\n2026-10-15 14:34:36,789 WARNING vlm vigil.vlm: [ev_bb90f136a04c4ec6] VLM request failed: connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))\n2026-10-15 14:34:45,611 INFO    MainThread vigil.pipeline: pipeline stopped\n"
+    },
+    {
+      "clip": "data/clips/fighting_01.mp4",
+      "returncode": 0,
+      "wall_s": 18.0,
+      "log_tail": "error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.). The weights are downloaded on first use; run scripts/download_models.* once while online.. Events will be stored without embeddings (rerun `python -m vigil.embeddings --repair` later).\n2026-10-15 14:34:53,618 WARNING MainThread vigil.pipeline: VLM not ready: Ollama is not reachable at http://localhost:11434. Install it from https://ollama.com, start it (`ollama serve` or the desktop app) and run `ollama pull moondream`. (events will be stored as unverified until it is)\n2026-10-15 14:34:53,619 INFO    MainThread vigil.pipeline: camera cam1 started (file)\n2026-10-15 14:34:53,623 INFO    MainThread vigil.pipeline: pipeline started (1 cameras, vlm=on)\n2026-10-15 14:34:56,633 INFO    detect vigil.pipeline: [cam1] trigger fighting score=0.44: tracks 1 and 2 close (d=0.74 heights) with relative motion energy 0.96 for 1.2s\n2026-10-15 14:34:56,640 WARNING vlm vigil.vlm: [ev_df4de7a931694172] VLM request failed: connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))\n2026-10-15 14:35:03,658 INFO    MainThread vigil.pipeline: pipeline stopped\n"
+    },
+    {
+      "clip": "data/clips/eval/normal_01.mp4",
+      "returncode": 0,
+      "wall_s": 582.1,
+      "log_tail": "d cpu)\n2026-10-15 14:35:08,108 INFO    MainThread vigil.tracker: YOLO /home/claude/vigil/models/yolov8n.pt loaded on cpu in 0.80s (warm-up 0.95s)\n2026-10-15 14:35:08,525 INFO    MainThread root: Loaded ViT-B-32 model config.\n2026-10-15 14:35:10,167 INFO    MainThread root: Loaded ViT-B-32 model config.\n2026-10-15 14:35:11,897 ERROR   MainThread vigil.pipeline: CLIP/Chroma unavailable: CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please check your connection and try again or make sure your Internet connection is on.). The weights are downloaded on first use; run scripts/download_models.* once while online.. Events will be stored without embeddings (rerun `python -m vigil.embeddings --repair` later).\n2026-10-15 14:35:11,901 WARNING MainThread vigil.pipeline: VLM not ready: Ollama is not reachable at http://localhost:11434. Install it from https://ollama.com, start it (`ollama serve` or the desktop app) and run `ollama pull moondream`. (events will be stored as unverified until it is)\n2026-10-15 14:35:11,902 INFO    MainThread vigil.pipeline: camera cam1 started (file)\n2026-10-15 14:35:11,906 INFO    MainThread vigil.pipeline: pipeline started (1 cameras, vlm=on)\n2026-10-15 14:44:45,741 INFO    MainThread vigil.pipeline: pipeline stopped\n"
+    }
+  ],
+  "pipeline_failures": [],
+  "footage_hours": 0.18611111111111112,
+  "event_free_footage_hours": 0.17,
+  "n_candidates": 5,
+  "unverified_fraction": 1.0,
+  "vlm_executed": false,
+  "heuristics_only": {
+    "per_category": {
+      "person down": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "n_gt": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "fighting": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "n_gt": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "tailgating": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "n_gt": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "crowd incident": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "n_gt": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      },
+      "suspicious activity": {
+        "tp": 1,
+        "fp": 0,
+        "fn": 0,
+        "n_gt": 1,
+        "precision": 1.0,
+        "recall": 1.0,
+        "f1": 1.0
+      }
+    },
+    "micro": {
+      "tp": 5,
+      "fp": 0,
+      "fn": 0,
+      "precision": 1.0,
+      "recall": 1.0,
+      "f1": 1.0
+    },
+    "duplicates": 0,
+    "n_predictions": 5,
+    "n_gt": 5,
+    "confusion": {
+      "person down": {
+        "person down": 1,
+        "fighting": 0,
+        "tailgating": 0,
+        "crowd incident": 0,
+        "suspicious activity": 0,
+        "none": 0
+      },
+      "fighting": {
+        "person down": 0,
+        "fighting": 1,
+        "tailgating": 0,
+        "crowd incident": 0,
+        "suspicious activity": 0,
+        "none": 0
+      },
+      "tailgating": {
+        "person down": 0,
+        "fighting": 0,
+        "tailgating": 1,
+        "crowd incident": 0,
+        "suspicious activity": 0,
+        "none": 0
+      },
+      "crowd incident": {
+        "person down": 0,
+        "fighting": 0,
+        "tailgating": 0,
+        "crowd incident": 1,
+        "suspicious activity": 0,
+        "none": 0
+      },
+      "suspicious activity": {
+        "person down": 0,
+        "fighting": 0,
+        "tailgating": 0,
+        "crowd incident": 0,
+        "suspicious activity": 1,
+        "none": 0
+      },
+      "none": {
+        "person down": 0,
+        "fighting": 0,
+        "tailgating": 0,
+        "crowd incident": 0,
+        "suspicious activity": 0,
+        "none": 0
+      }
+    },
+    "labels": [
+      "person down",
+      "fighting",
+      "tailgating",
+      "crowd incident",
+      "suspicious activity",
+      "none"
+    ],
+    "false_positives": [],
+    "reliability": [
+      {
+        "range": [
+          0.0,
+          0.5
+        ],
+        "n": 1,
+        "n_tp": 1,
+        "precision": 1.0
+      },
+      {
+        "range": [
+          0.5,
+          0.7
+        ],
+        "n": 3,
+        "n_tp": 3,
+        "precision": 1.0
+      },
+      {
+        "range": [
+          0.7,
+          0.85
+        ],
+        "n": 1,
+        "n_tp": 1,
+        "precision": 1.0
+      },
+      {
+        "range": [
+          0.85,
+          1.0
+        ],
+        "n": 0,
+        "n_tp": 0,
+        "precision": null
+      }
+    ],
+    "gt_matches": [
+      {
+        "clip": "person_down_01.mp4",
+        "category": "person down",
+        "start": 4.0,
+        "end": 12.0,
+        "matched_event": "ev_9ddbec712fa841eb",
+        "event_t": 6.800000000000001
+      },
+      {
+        "clip": "tailgating_01.mp4",
+        "category": "tailgating",
+        "start": 2.0,
+        "end": 3.0,
+        "matched_event": "ev_c96106ced35f47d9",
+        "event_t": 2.9000000000000004
+      },
+      {
+        "clip": "suspicious_01.mp4",
+        "category": "suspicious activity",
+        "start": 2.0,
+        "end": 14.0,
+        "matched_event": "ev_23efc5b57da64e45",
+        "event_t": 10.100000000000001
+      },
+      {
+        "clip": "crowd_01.mp4",
+        "category": "crowd incident",
+        "start": 2.0,
+        "end": 12.0,
+        "matched_event": "ev_bb90f136a04c4ec6",
+        "event_t": 3.1
+      },
+      {
+        "clip": "fighting_01.mp4",
+        "category": "fighting",
+        "start": 1.5,
+        "end": 10.0,
+        "matched_event": "ev_df4de7a931694172",
+        "event_t": 2.9000000000000004
+      }
+    ],
+    "false_alarms_per_hour_all_footage": 0.0,
+    "false_alarms_per_hour_event_free_footage": 0.0
+  },
+  "vlm_assisted": {
+    "executed": false,
+    "reason": "no event carries a VLM verdict (Ollama/VLM not reachable during this run); vlm_assisted would equal heuristics_only"
+  },
+  "latency": {
+    "vlm_s": {
+      "n": 0,
+      "p50": null,
+      "p95": null
+    },
+    "trigger_to_stored_s": {
+      "n": 5,
+      "p50": 0.015,
+      "p95": 0.018,
+      "note": "offline replay at --speed 0: queueing delay, not live latency"
+    }
+  },
+  "runtime_metrics": {
+    "person_down_01": {
+      "counters": {
+        "errors": 2,
+        "triggers": 1,
+        "vlm_failures": 1,
+        "triggers_extended": 5
+      },
+      "gauges": {
+        "detector_device": "cpu",
+        "vlm_queue_depth": 0
+      },
+      "warmup_s": {
+        "yolo_load_s": 0.791,
+        "yolo_warmup_s": 0.771
+      },
+      "stages": {
+        "ingest_to_detect": {
+          "n": 120,
+          "p50_ms": 3019.91,
+          "p95_ms": 3104.06,
+          "max_ms": 3191.51,
+          "last_ms": 2880.46
+        },
+        "detect": {
+          "n": 120,
+          "p50_ms": 92.85,
+          "p95_ms": 112.77,
+          "max_ms": 378.51,
+          "last_ms": 107.25
+        },
+        "trigger_to_vlm_start": {
+          "n": 1,
+          "p50_ms": 0.8,
+          "p95_ms": 0.8,
+          "max_ms": 0.8,
+          "last_ms": 0.8
+        },
+        "trigger_to_store": {
+          "n": 1,
+          "p50_ms": 15.39,
+          "p95_ms": 15.39,
+          "max_ms": 15.39,
+          "last_ms": 15.39
+        }
+      },
+      "memory": {
+        "rss_mb": 1962.43456,
+        "peak_rss_mb": 1966.350336,
+        "torch_peak_mb": null,
+        "smi_used_mb": null,
+        "smi_total_mb": null
+      },
+      "errors": [
+        {
+          "t": 1792074787.9230263,
+          "source": "embeddings",
+          "message": "CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please che"
+        },
+        {
+          "t": 1792074795.01491,
+          "source": "vlm",
+          "message": "connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))"
+        }
+      ]
+    },
+    "tailgating_01": {
+      "counters": {
+        "errors": 2,
+        "triggers": 1,
+        "vlm_failures": 1
+      },
+      "gauges": {
+        "detector_device": "cpu",
+        "vlm_queue_depth": 0
+      },
+      "warmup_s": {
+        "yolo_load_s": 0.834,
+        "yolo_warmup_s": 0.958
+      },
+      "stages": {
+        "ingest_to_detect": {
+          "n": 80,
+          "p50_ms": 2749.06,
+          "p95_ms": 3023.66,
+          "max_ms": 3173.54,
+          "last_ms": 3173.54
+        },
+        "detect": {
+          "n": 80,
+          "p50_ms": 89.01,
+          "p95_ms": 121.61,
+          "max_ms": 273.31,
+          "last_ms": 101.4
+        },
+        "trigger_to_vlm_start": {
+          "n": 1,
+          "p50_ms": 0.5,
+          "p95_ms": 0.5,
+          "max_ms": 0.5,
+          "last_ms": 0.5
+        },
+        "trigger_to_store": {
+          "n": 1,
+          "p50_ms": 18.43,
+          "p95_ms": 18.43,
+          "max_ms": 18.43,
+          "last_ms": 18.43
+        }
+      },
+      "memory": {
+        "rss_mb": 1961.189376,
+        "peak_rss_mb": 1961.312256,
+        "torch_peak_mb": null,
+        "smi_used_mb": null,
+        "smi_total_mb": null
+      },
+      "errors": [
+        {
+          "t": 1792074809.1717737,
+          "source": "embeddings",
+          "message": "CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please che"
+        },
+        {
+          "t": 1792074812.0723276,
+          "source": "vlm",
+          "message": "connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))"
+        }
+      ]
+    },
+    "tailgating_negative_01": {
+      "counters": {
+        "errors": 1
+      },
+      "gauges": {
+        "detector_device": "cpu"
+      },
+      "warmup_s": {
+        "yolo_load_s": 0.821,
+        "yolo_warmup_s": 0.897
+      },
+      "stages": {
+        "ingest_to_detect": {
+          "n": 120,
+          "p50_ms": 3031.61,
+          "p95_ms": 3174.58,
+          "max_ms": 3235.67,
+          "last_ms": 2935.03
+        },
+        "detect": {
+          "n": 120,
+          "p50_ms": 93.94,
+          "p95_ms": 113.54,
+          "max_ms": 313.74,
+          "last_ms": 90.08
+        }
+      },
+      "memory": {
+        "rss_mb": 1960.26368,
+        "peak_rss_mb": 1960.382464,
+        "torch_peak_mb": null,
+        "smi_used_mb": null,
+        "smi_total_mb": null
+      },
+      "errors": [
+        {
+          "t": 1792074826.1945598,
+          "source": "embeddings",
+          "message": "CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please che"
+        }
+      ]
+    },
+    "suspicious_01": {
+      "counters": {
+        "errors": 2,
+        "triggers": 1,
+        "vlm_failures": 1,
+        "triggers_extended": 3
+      },
+      "gauges": {
+        "detector_device": "cpu",
+        "vlm_queue_depth": 0
+      },
+      "warmup_s": {
+        "yolo_load_s": 0.902,
+        "yolo_warmup_s": 0.966
+      },
+      "stages": {
+        "ingest_to_detect": {
+          "n": 160,
+          "p50_ms": 3058.85,
+          "p95_ms": 3210.79,
+          "max_ms": 3245.85,
+          "last_ms": 2911.34
+        },
+        "detect": {
+          "n": 160,
+          "p50_ms": 93.9,
+          "p95_ms": 117.04,
+          "max_ms": 305.65,
+          "last_ms": 101.15
+        },
+        "trigger_to_vlm_start": {
+          "n": 1,
+          "p50_ms": 2.87,
+          "p95_ms": 2.87,
+          "max_ms": 2.87,
+          "last_ms": 2.87
+        },
+        "trigger_to_store": {
+          "n": 1,
+          "p50_ms": 14.65,
+          "p95_ms": 14.65,
+          "max_ms": 14.65,
+          "last_ms": 14.65
+        }
+      },
+      "memory": {
+        "rss_mb": 1967.992832,
+        "peak_rss_mb": 1968.128,
+        "torch_peak_mb": null,
+        "smi_used_mb": null,
+        "smi_total_mb": null
+      },
+      "errors": [
+        {
+          "t": 1792074847.3712924,
+          "source": "embeddings",
+          "message": "CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please che"
+        },
+        {
+          "t": 1792074857.8108675,
+          "source": "vlm",
+          "message": "connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))"
+        }
+      ]
+    },
+    "crowd_01": {
+      "counters": {
+        "errors": 2,
+        "triggers": 1,
+        "vlm_failures": 1,
+        "triggers_extended": 8
+      },
+      "gauges": {
+        "detector_device": "cpu",
+        "vlm_queue_depth": 0
+      },
+      "warmup_s": {
+        "yolo_load_s": 1.043,
+        "yolo_warmup_s": 0.955
+      },
+      "stages": {
+        "ingest_to_detect": {
+          "n": 120,
+          "p50_ms": 2973.72,
+          "p95_ms": 3105.12,
+          "max_ms": 3293.64,
+          "last_ms": 2975.59
+        },
+        "detect": {
+          "n": 120,
+          "p50_ms": 92.75,
+          "p95_ms": 117.33,
+          "max_ms": 361.04,
+          "last_ms": 87.95
+        },
+        "trigger_to_vlm_start": {
+          "n": 1,
+          "p50_ms": 0.83,
+          "p95_ms": 0.83,
+          "max_ms": 0.83,
+          "last_ms": 0.83
+        },
+        "trigger_to_store": {
+          "n": 1,
+          "p50_ms": 13.9,
+          "p95_ms": 13.9,
+          "max_ms": 13.9,
+          "last_ms": 13.9
+        }
+      },
+      "memory": {
+        "rss_mb": 1964.62592,
+        "peak_rss_mb": 1964.756992,
+        "torch_peak_mb": null,
+        "smi_used_mb": null,
+        "smi_total_mb": null
+      },
+      "errors": [
+        {
+          "t": 1792074873.294771,
+          "source": "embeddings",
+          "message": "CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please che"
+        },
+        {
+          "t": 1792074876.7902064,
+          "source": "vlm",
+          "message": "connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))"
+        }
+      ]
+    },
+    "fighting_01": {
+      "counters": {
+        "errors": 2,
+        "triggers": 1,
+        "vlm_failures": 1,
+        "triggers_extended": 5
+      },
+      "gauges": {
+        "detector_device": "cpu",
+        "vlm_queue_depth": 0
+      },
+      "warmup_s": {
+        "yolo_load_s": 0.762,
+        "yolo_warmup_s": 0.859
+      },
+      "stages": {
+        "ingest_to_detect": {
+          "n": 100,
+          "p50_ms": 2868.26,
+          "p95_ms": 2999.14,
+          "max_ms": 3092.19,
+          "last_ms": 2864.08
+        },
+        "detect": {
+          "n": 100,
+          "p50_ms": 88.27,
+          "p95_ms": 110.28,
+          "max_ms": 363.46,
+          "last_ms": 99.4
+        },
+        "trigger_to_vlm_start": {
+          "n": 1,
+          "p50_ms": 0.56,
+          "p95_ms": 0.56,
+          "max_ms": 0.56,
+          "last_ms": 0.56
+        },
+        "trigger_to_store": {
+          "n": 1,
+          "p50_ms": 13.86,
+          "p95_ms": 13.86,
+          "max_ms": 13.86,
+          "last_ms": 13.86
+        }
+      },
+      "memory": {
+        "rss_mb": 1961.033728,
+        "peak_rss_mb": 1962.471424,
+        "torch_peak_mb": null,
+        "smi_used_mb": null,
+        "smi_total_mb": null
+      },
+      "errors": [
+        {
+          "t": 1792074893.6165903,
+          "source": "embeddings",
+          "message": "CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please che"
+        },
+        {
+          "t": 1792074896.6408558,
+          "source": "vlm",
+          "message": "connect: cannot connect to Ollama at http://localhost:11434: HTTPConnectionPool(host='localhost', port=11434): Max retries exceeded with url: /api/chat (Caused by NewConnectionError(\"HTTPConnection(host='localhost', port=11434): Failed to establish a new connection: [Errno 111] Connection refused\"))"
+        }
+      ]
+    },
+    "normal_01": {
+      "counters": {
+        "errors": 1
+      },
+      "gauges": {
+        "detector_device": "cpu"
+      },
+      "warmup_s": {
+        "yolo_load_s": 0.803,
+        "yolo_warmup_s": 0.95
+      },
+      "stages": {
+        "ingest_to_detect": {
+          "n": 2000,
+          "p50_ms": 3011.83,
+          "p95_ms": 3427.83,
+          "max_ms": 3697.09,
+          "last_ms": 3054.3
+        },
+        "detect": {
+          "n": 2000,
+          "p50_ms": 94.08,
+          "p95_ms": 118.75,
+          "max_ms": 141.82,
+          "last_ms": 126.63
+        }
+      },
+      "memory": {
+        "rss_mb": 1969.471488,
+        "peak_rss_mb": 1971.060736,
+        "torch_peak_mb": null,
+        "smi_used_mb": null,
+        "smi_total_mb": null
+      },
+      "errors": [
+        {
+          "t": 1792074911.899304,
+          "source": "embeddings",
+          "message": "CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please che"
+        }
+      ]
+    }
+  },
+  "retrieval": {
+    "executed": false,
+    "reason": "CLIP unavailable: EmbedderUnavailable: CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying"
+  },
+  "caveats": [
+    "Clips are synthetic (pasted person cut-outs on a plain floor); results show the pipeline works end to end, not real-world accuracy.",
+    "The fighting clip's choreography was tuned until the heuristic fired.",
+    "confidence_score is an uncalibrated ranking heuristic, not a probability."
+  ]
+}

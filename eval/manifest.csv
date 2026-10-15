@@ -1,0 +1,11 @@
+clip,camera_id,category,start_s,end_s,status,provenance,split,notes
+data/clips/person_down_01.mp4,cam1,person down,4.0,12.0,runnable,synthetic (scripts/make_demo_clips.py),dev,Sprite walks in then collapses at t=4.0 s and lies still until the end. Interval = fall start to clip end.
+data/clips/tailgating_01.mp4,cam2,tailgating,2.0,3.0,runnable,synthetic (scripts/make_demo_clips.py),dev,Two sprites cross entry_gate 0.8 s apart (crossings at ~2.0 s and ~2.8 s).
+data/clips/tailgating_negative_01.mp4,cam2,none,,,runnable,synthetic (scripts/make_demo_clips.py),dev,Same two crossings 4.5 s apart: must NOT trigger tailgating.
+data/clips/suspicious_01.mp4,cam1,suspicious activity,2.0,14.0,runnable,synthetic (scripts/make_demo_clips.py),dev,Sprite stands inside the restricted zone from 2 s to 14 s (loiter_s=8 so the alert is expected at ~10 s).
+data/clips/crowd_01.mp4,cam1,crowd incident,2.0,12.0,runnable,synthetic (scripts/make_demo_clips.py),dev,Eight sprites gather from t=2 s (crowd_count=6).
+data/clips/fighting_01.mp4,cam1,fighting,1.5,10.0,runnable,synthetic (scripts/make_demo_clips.py),dev,Two sprites stay close and jostle in opposite phase from t=1.5 s. Choreography was tuned until the heuristic fired; it is NOT an independent test.
+data/clips/eval/normal_01.mp4,cam1,none,,,runnable,synthetic (scripts/make_demo_clips.py --normal-minutes 10),dev,Ten minutes of people walking through; nothing should trigger. Used for false alarms per hour.
+external/RWF-2000,,fighting,,,not_run,external dataset (RWF-2000; not bundled / not downloaded),test,NOT RUN. Real fight/non-fight clips. Download separately and add one row per clip.
+external/UR-Fall,,person down,,,not_run,external dataset (UR Fall Detection; not bundled / not downloaded),test,NOT RUN. Real falls recorded in a lab. Add one row per clip.
+external/Le2i,,person down,,,not_run,external dataset (Le2i fall dataset; not bundled / not downloaded),test,NOT RUN. Real falls in home/office scenes. Add one row per clip.

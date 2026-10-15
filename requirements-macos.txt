@@ -1,0 +1,6 @@
+# macOS (Apple Silicon, M-series).  Native arm64 Python 3.11 required (not Rosetta).
+#   python3.11 -m venv .venv && source .venv/bin/activate
+#   pip install torch==2.5.1 torchvision==0.20.1      # default PyPI macOS wheels include MPS support
+#   pip install -r requirements-macos.txt
+-r requirements.txt
+# Ollama runs as a separate native app (https://ollama.com/download) and uses Metal automatically.

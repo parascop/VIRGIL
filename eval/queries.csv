@@ -1,0 +1,9 @@
+query,relevant_clips,notes
+a person lying on the floor,person_down_01,visual description of a fall
+someone collapsed and is not moving,person_down_01,paraphrase
+two people entering through the gate one after another,tailgating_01,tailgating; the negative clip is also a plausible visual match
+a group of people gathered together,crowd_01,crowd
+a large crowd standing in the lobby,crowd_01,paraphrase
+a person standing near the restricted door,suspicious_01,restricted-zone loitering
+two people fighting,fighting_01,fight
+people close together moving aggressively,fighting_01,paraphrase

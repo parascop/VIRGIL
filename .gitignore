@@ -1,0 +1,11 @@
+__pycache__/
+*.pyc
+.venv/
+data/vigil.db*
+data/chroma/
+data/keyframes/
+data/live/
+data/jobs/
+data/cache/
+eval/results/run/
+.pytest_cache/

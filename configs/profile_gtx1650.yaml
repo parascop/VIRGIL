@@ -1,0 +1,22 @@
+# Windows NVIDIA GTX 1650 laptop/desktop. VRAM differs between variants
+# (typically 4 GB); scripts/diagnose.py reports the real value.
+name: gtx1650
+hardware:
+  match_gpu: ["GTX 1650", "GTX 1650 Ti"]
+  vram_budget_mb: 3400
+torch_device: auto
+detector:
+  model: models/yolov8n.pt
+  device: auto
+  imgsz: 480
+  conf: 0.10              # ByteTrack input threshold (see defaults.yaml)
+  half: false             # GTX 16xx FP16 is unreliable in some PyTorch builds
+vlm:
+  base_url: http://localhost:11434
+  model: moondream
+  composite_max_side: 512
+  num_ctx: 2048
+  num_predict: 120
+  keep_alive: 10m
+embeddings:
+  device: cpu

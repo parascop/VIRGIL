@@ -1,0 +1,24 @@
+# Windows 10/11 + NVIDIA RTX 2050 laptop GPU (nominal 4 GB VRAM), 16 GB RAM.
+# Budget ~3.6 GB VRAM total for the app (YOLO + Ollama VLM + CUDA contexts).
+# `vlm.model`, `vlm.composite_max_side` and `vlm.benchmark` are rewritten by
+# scripts/benchmark_models.py after a real benchmark on the machine.
+name: rtx2050
+hardware:
+  match_gpu: ["RTX 2050"]
+  vram_budget_mb: 3600
+torch_device: auto
+detector:
+  model: models/yolov8n.pt
+  device: auto            # cuda:0 if available; set to cpu if VRAM is tight
+  imgsz: 480
+  conf: 0.10              # ByteTrack input threshold (see defaults.yaml)
+  half: true
+vlm:
+  base_url: http://localhost:11434
+  model: moondream
+  composite_max_side: 512
+  num_ctx: 2048
+  num_predict: 120
+  keep_alive: 10m
+embeddings:
+  device: cpu             # keep GPU free for YOLO + Ollama

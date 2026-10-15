@@ -1,0 +1,142 @@
+{
+ "hardware": {
+  "os": "Linux",
+  "os_release": "6.18.44-fc-v114",
+  "os_version": "#1 SMP PREEMPT_DYNAMIC @0",
+  "python": "3.11.17",
+  "python_arch": "64bit",
+  "machine": "x86_64",
+  "cpu": "x86_64",
+  "cpu_count": 2,
+  "ram_mb": 8029.609375,
+  "torch": "2.5.1+cu124",
+  "cuda_available": false,
+  "cuda_runtime": "12.4",
+  "mps_built": false,
+  "mps_available": false,
+  "gpu_name": null,
+  "gpu_vram_mb": null,
+  "torch_error": null,
+  "apple_silicon": false,
+  "nvidia_smi": null
+ },
+ "profile": "configs/profile_gtx1650.yaml",
+ "results": [
+  {
+   "check": "python",
+   "status": "INFO",
+   "detail": "3.11.17 (64bit) /home/claude/venv311/bin/python"
+  },
+  {
+   "check": "os",
+   "status": "INFO",
+   "detail": "Linux 6.18.44-fc-v114 / cpu arch x86_64"
+  },
+  {
+   "check": "system RAM",
+   "status": "INFO",
+   "detail": "7.8 GB"
+  },
+  {
+   "check": "pytorch",
+   "status": "INFO",
+   "detail": "2.5.1+cu124 (CUDA runtime 12.4)"
+  },
+  {
+   "check": "cuda",
+   "status": "NOT_RUN",
+   "detail": "no NVIDIA GPU detected"
+  },
+  {
+   "check": "mps",
+   "status": "NOT_RUN",
+   "detail": "not an Apple Silicon machine"
+  },
+  {
+   "check": "profile",
+   "status": "INFO",
+   "detail": "profile_gtx1650.yaml (explicit --profile)"
+  },
+  {
+   "check": "profile validation",
+   "status": "PASS",
+   "detail": "gtx1650: valid"
+  },
+  {
+   "check": "opencv video decode",
+   "status": "PASS",
+   "detail": "cv2 4.10.0: decoded 10/10 frames"
+  },
+  {
+   "check": "ultralytics",
+   "status": "INFO",
+   "detail": "8.3.40"
+  },
+  {
+   "check": "detector device",
+   "status": "INFO",
+   "detail": "cpu (fell back to cpu (wanted auto))"
+  },
+  {
+   "check": "yolo one-image detection",
+   "status": "PASS",
+   "detail": "4 objects, 4 people on cpu; load 0.03s, 1 inference 0.108s (bus.jpg)"
+  },
+  {
+   "check": "bytetrack",
+   "status": "PASS",
+   "detail": "BYTETracker constructed and updated"
+  },
+  {
+   "check": "ollama connectivity",
+   "status": "NOT_INSTALLED",
+   "detail": "the `ollama` command was not found. Ollama is not reachable at http://localhost:11434. Install it from https://ollama.com, start it (`ollama serve` or the desktop app) and run `ollama pull moondream`."
+  },
+  {
+   "check": "vlm one-image inference",
+   "status": "NOT_RUN",
+   "detail": "Ollama not reachable"
+  },
+  {
+   "check": "clip checkpoint load",
+   "status": "MODEL_UNAVAILABLE",
+   "detail": "CLIP ViT-B-32/openai could not be loaded (FileNotFoundError: Failed to download file (open_clip_pytorch_model.bin) for timm/vit_base_patch32_clip_224.openai. Last error: An error happened while trying to locate the file on the Hub and we cannot find the requested files in the local cache. Please che"
+  },
+  {
+   "check": "clip image embedding",
+   "status": "NOT_RUN",
+   "detail": "checkpoint not loaded"
+  },
+  {
+   "check": "clip text embedding",
+   "status": "NOT_RUN",
+   "detail": "checkpoint not loaded"
+  },
+  {
+   "check": "sqlite read/write",
+   "status": "PASS",
+   "detail": "sqlite 3.45.1, journal_mode=wal"
+  },
+  {
+   "check": "chromadb persistence",
+   "status": "PASS",
+   "detail": "chromadb 0.5.23: vector survived reopen"
+  },
+  {
+   "check": "streamlit import",
+   "status": "PASS",
+   "detail": "1.40.2"
+  },
+  {
+   "check": "pyarrow (dashboard tables)",
+   "status": "PASS",
+   "detail": "17.0.0"
+  },
+  {
+   "check": "streamlit startup",
+   "status": "PASS",
+   "detail": "health endpoint on :59077 ok"
+  }
+ ],
+ "time": 1792075789.5372076
+}

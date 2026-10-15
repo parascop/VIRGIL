@@ -1,0 +1,24 @@
+# Vigil: shared, pinned dependencies.  Python 3.11 (3.12 may work; not tested).
+#
+# Install order (see README):
+#   1. python3.11 -m venv .venv  &&  activate it
+#   2. install PyTorch for your hardware FIRST (see requirements-macos.txt / requirements-windows.txt)
+#   3. pip install -r requirements-<platform>.txt      (which includes this file)
+#
+# torch/torchvision are intentionally NOT pinned here: the right wheel differs per
+# platform (CUDA build on Windows, plain build on macOS).  Tested versions: 2.5.1 / 0.20.1.
+ultralytics==8.3.40        # YOLOv8n + ByteTrack.  AGPL-3.0 licensed (see README)
+lapx==0.5.11               # ByteTrack's linear-assignment solver (without it ultralytics tries to pip-install at runtime)
+opencv-python==4.10.0.84   # tested here as opencv-python-headless 4.10.0.84 (same code, no GUI)
+numpy==1.26.4
+Pillow==10.4.0
+PyYAML==6.0.2
+requests==2.32.3
+open-clip-torch==2.29.0    # CLIP ViT-B/32
+chromadb==0.5.23
+posthog==3.7.4             # chromadb telemetry client; newer majors break chromadb 0.5.x with a harmless-but-noisy error
+streamlit==1.40.2
+pyarrow==17.0.0           # streamlit dependency: pyarrow >= 22 needs NumPy 2 and breaks st.table/st.dataframe with numpy 1.26
+pandas==2.2.3
+matplotlib==3.9.2
+pytest==8.3.3

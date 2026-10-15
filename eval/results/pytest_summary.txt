@@ -1,0 +1,1 @@
+`python -m pytest -q` on the Linux CPU sandbox (Python 3.11): **143 passed, 1209 warnings in 30.13s**. Executed 2026-10-15; Windows and macOS runs: **NOT EXECUTED**.
