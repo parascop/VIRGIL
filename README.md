@@ -151,3 +151,4 @@ Ultralytics YOLOv8 is **AGPL-3.0**. If you distribute Vigil or offer it over a n
 - Heuristic thresholds are starting values, not tuned for any real scene.
 - Small VLMs (1-4 B) hallucinate and mis-describe; read `verified` as "a small model agreed", not as proof.
 - Not a safety-critical system: do not rely on it as the only means of detecting emergencies.
+# VIRGIL
